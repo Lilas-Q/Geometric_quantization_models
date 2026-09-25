@@ -1,0 +1,24 @@
+{
+  "model_name": "LHFM-I",
+  "dataset": "CIFAR-10",
+  "image_count": 64,
+  "checkpoint_step": 150000,
+  "use_ema": true,
+  "sampling": {
+    "method": "heun",
+    "steps": 128,
+    "nfe_per_image": 256,
+    "batch_size": 64,
+    "seed": 827043,
+    "transport_multiplier": 1,
+    "network_precision": "bfloat16_cuda",
+    "geometry_and_ode_precision": "float32",
+    "intermediate_clamping": false
+  },
+  "checkpoint_sha256": "3149ad80be5481ed256b602f6c287bc0a749f9f7e58be91c8cdfd5c38d04edd8",
+  "ema_weights_sha256": "d11da0037d01e80bb4fc447af8d45a9de32780d8e2cbd727ad487fb0ab2ba28e",
+  "original_config_sha256": "f1dfea2a1c181a9a158cefd3b668cebebdff66fc5eb908951226dc643639dfe2",
+  "evaluation_report_sha256": "e189e552f1c1bafdd1f5247153953b1d05e7f2a99468e53cb832bc4ebf97ca1f",
+  "image_sha256": "9dff0c281f07dec8186e29b3b5a8331ca9d81a284c5d27dbe4efa6d79016094c",
+  "provenance": "Unmodified archived sampling preview of the original LHFM-I implementation at 150k updates. The evaluation uses the original velocity with transport multiplier 1.0. This checkpoint predates the matched rerun identified in the root PROVENANCE.json; its model source hashes agree with that implementation. No new training or sampling was performed for this README."
+}

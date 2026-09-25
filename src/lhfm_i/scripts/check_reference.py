@@ -8,6 +8,7 @@ import torch
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--reference-src", required=True)
+parser.add_argument("--config", default="configs/lhfm_i_cifar10.json")
 args = parser.parse_args()
 sys.path.insert(0, args.reference_src)
 from lhfm_final.model import FinalUNet
@@ -17,8 +18,7 @@ from lhfm_i import LHFM_I, sample_ode
 from lhfm_i.training import EMA, image_batch, optimizer_for, train_step
 
 torch.set_num_threads(1)
-root = Path(__file__).resolve().parents[1]
-config = json.loads((root / "configs/lhfm_i_cifar10.json").read_text())
+config = json.loads(Path(args.config).read_text())
 
 def assert_weights_equal(left, right):
     assert left.keys() == right.keys()

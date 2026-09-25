@@ -1,4 +1,4 @@
-"""Train LHFM-I on CIFAR-10; no training is launched by installing the package."""
+"""Train LHFM-I: python -m lhfm_i.scripts.train."""
 
 import argparse
 import json

@@ -1,4 +1,4 @@
-"""Sample images using an LHFM-I EMA checkpoint and the image-space ODE."""
+"""Sample from an LHFM-I EMA checkpoint: python -m lhfm_i.scripts.sample."""
 
 import argparse
 from pathlib import Path

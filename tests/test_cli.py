@@ -1,7 +1,9 @@
-import importlib.util
+import importlib
 import json
 from pathlib import Path
 import sys
+import subprocess
+import pytest
 import torch
 from PIL import Image
 from lhfm_i.checkpoint import read_checkpoint
@@ -10,10 +12,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def load_script(name):
-    spec = importlib.util.spec_from_file_location(f"lhfm_i_{name}_cli", ROOT / "scripts" / f"{name}.py")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
+    return importlib.import_module(f"lhfm_i.scripts.{name}")
+
+
+@pytest.mark.parametrize("name", ["train", "sample", "check_reference"])
+def test_module_help(name):
+    result = subprocess.run([sys.executable, "-m", f"lhfm_i.scripts.{name}", "--help"],
+                            cwd=ROOT, text=True, capture_output=True, timeout=30)
+    assert result.returncode == 0, result.stderr
+    assert "usage:" in result.stdout
 
 
 def test_train_resume_and_sample_cli_on_synthetic_data(tmp_path, monkeypatch):
