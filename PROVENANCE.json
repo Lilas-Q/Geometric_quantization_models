@@ -1,0 +1,27 @@
+{
+  "model_name": "LHFM-I",
+  "historical_experiment_release_sha256": "7f2b0bd991c6613c2ca3e7d92809cf69f2a21ec400edb637c295f7910eff794b",
+  "historical_completion_sha256": "19a3ba82633d21aff2ed03b83f764c776cac0072083b71ba18a4f0b07ae87c36",
+  "historical_config_file_sha256": "d16e13bf6d4da2a25253e1663eec03f3f73d1f8ab7639e8992cc22b80ce0e062",
+  "source_file_sha256": {
+    "image_lagrangian_fm/model.py": "46ad147f903f61455bc6a01e8ec8099a5cd511ca3fabaf7d30b107e82af962d3",
+    "image_lagrangian_fm/geometry.py": "a078cdc7ab94a3d9aaa807bcf763d241121c5fc2e3106bd66c79a6622381a73f",
+    "image_lagrangian_transport_fm/model.py": "4b7b05a89c84aefd19065aa458d714173083a748bc0dc6f50422bc01450977cd",
+    "lhfm_final/model.py": "6666715d7ab11b706821b36cac7fa93fb6351ffd27a4ea5b44412feb3dbbe5cd",
+    "image_lagrangian_fm/process.py": "a23de8695bffe82926f4f6e5b39ba6f8c5f5fc0557bc10d9fb0e5ab30dc96b03",
+    "image_lagrangian_fm/sampling.py": "1e8de1315514b083bc31e397ffd126ecf41a1e42e1fb2137dbc487349ddac04c",
+    "image_lagrangian_fm/training.py": "cfc1f3249dcce32e3f969cb69386e8b8ed3f1b543a7562dabee594f536abb782",
+    "image_lagrangian_hamiltonian_only_fm/training.py": "e03341f689f2b6889a9882c59bf5c758ece564ecd23100940bcb87b022ba3f54"
+  },
+  "parameter_count": 39627909,
+  "formula": "u=0.125*t*tanh(raw_u); v=r-(DF_J|grid)*u",
+  "modifications": [
+    "Public package and model names unified as LHFM-I.",
+    "Removed unused transport variants and low-frequency projection code from this release.",
+    "Retained parameter state-dict names, model initialization, full-band derivative, and numerical update helpers.",
+    "Packaged standalone command-line training/sampling and a new full-state checkpoint format."
+  ],
+  "weights_included": false,
+  "datasets_included": false,
+  "new_training_run": false
+}

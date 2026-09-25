@@ -1,0 +1,35 @@
+{
+  "model_name": "LHFM-I",
+  "model": {
+    "image_size": 32,
+    "base_channels": 128,
+    "multipliers": [1, 2, 2, 2],
+    "residual_blocks": 2,
+    "attention_resolutions": [16, 8],
+    "heads": 4,
+    "dropout": 0.1,
+    "transport_scale": 0.125
+  },
+  "training": {
+    "steps": 400000,
+    "stop_step": 150000,
+    "batch_size": 256,
+    "seed": 270829,
+    "learning_rate": 0.00025,
+    "minimum_learning_rate": 0.00002,
+    "warmup_steps": 2000,
+    "weight_decay": 0,
+    "adam_betas": [0.9, 0.999],
+    "gradient_clip": 1,
+    "ema_decay": 0.9999,
+    "horizontal_flip": true,
+    "log_every": 100,
+    "checkpoint_every": 1000
+  },
+  "sampling": {
+    "method": "heun",
+    "steps": 128,
+    "seed": 827043,
+    "maximum_rms": 100.0
+  }
+}
