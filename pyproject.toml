@@ -4,17 +4,20 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lhfm-i"
-version = "0.2.0"
+version = "0.2.1"
 description = "LHFM-I image generation and LHFM-V deterministic video prediction"
 requires-python = ">=3.10"
 dependencies = ["torch>=2.2", "torchvision>=0.17"]
 
 [project.optional-dependencies]
-test = ["pytest>=8"]
-video = ["numpy>=1.24", "Pillow>=10"]
+test = ["pytest>=8", "numpy==1.26.4", "scipy==1.15.3", "Pillow>=10"]
+video = ["numpy==1.26.4", "scipy==1.15.3", "Pillow>=10"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+lhfm_v = ["licenses/*.txt"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

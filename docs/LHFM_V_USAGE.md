@@ -12,6 +12,8 @@ using these standalone scripts.
 
 ## Installation
 
+Use Python 3.10–3.12 for the pinned video-evaluation dependencies
+(NumPy 1.26.4 and SciPy 1.15.3); release tests used Python 3.12.
 From the repository root:
 
 ```bash
@@ -185,15 +187,21 @@ select a different step. Do not use test scores to select checkpoints.
 
 | Model | EMA update | Parameters (M) | MSE ↓ | MAE ↓ | SSIM ↑ | PSNR ↑ |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| **LHFM-V** | **1,250,000** | **18.637493** | **18.5812** | **62.5134** | **0.9420** | **24.6747** |
+| **LHFM-V** | **1,250,000** | **18.637493** | **18.5812** | **62.5134** | **0.9582** | **24.6747** |
 
 One completed run, evaluated on 10,000 official test sequences, with ten
 observed and ten predicted frames. Inputs are uint8/255. MSE and MAE above
 use raw predictions and sum over the 64 × 64 spatial grid, then average over
 frames and sequences. Their pixel-mean values are 0.0045364187 and
-0.0152620638. SSIM and PSNR use predictions clipped to `[0, 1]`; SSIM uses an
-11 × 11 Gaussian window (sigma 1.5), and PSNR is averaged per frame. These
-protocols must be aligned before comparing numbers from other implementations.
+0.0152620638. SSIM and PSNR use predictions clipped to `[0, 1]`, with targets
+unchanged. SSIM follows the scikit-image 0.19.3 protocol: a 7 × 7 uniform
+window, sample covariance, `data_range=2`, and K1 = 0.01, K2 = 0.03.
+FP32 SSIM maps are averaged over the interior after excluding a three-pixel
+border, with the single-channel mean cast to FP32 and frame/sequence scores
+accumulated in FP64. PSNR is averaged per frame. See the
+[protocol and source record](../results/lhfm_v_ssim_protocol.json).
+Metric definitions and evaluation settings must be aligned before comparing
+numbers from other implementations.
 
 The selected EMA's validation MSE is **18.5236**, distinct from test MSE.
 [Full test results](../results/lhfm_v_moving_mnist_1250k.json) include per-frame

@@ -1,0 +1,57 @@
+{
+  "model": "LHFM-V",
+  "checkpoint_step": 1250000,
+  "checkpoint_sha256": "a280ad2b1e85fd8545164bcd0c24b2af7aa1b7a2025be7d2d62171cf75e4256c",
+  "dataset_sha256": "c2a3e8d3939c001ab77bf543f130157424efa486bb4d0974d2cebb773b13f8b3",
+  "test_sequences": 10000,
+  "future_frames_per_sequence": 10,
+  "frame_scores": 100000,
+  "ssim": 0.9582201841366291,
+  "protocol": {
+    "input": "float32 [B,T,1,H,W]; uint8/255 targets",
+    "clip": "prediction only to [0,1]; target unchanged; no uint8 rounding",
+    "axis_transform": "frame.swapaxes(0,2), channel_axis=-1",
+    "win_size": 7,
+    "gaussian_weights": false,
+    "use_sample_covariance": true,
+    "data_range": 2,
+    "K1": 0.01,
+    "K2": 0.03,
+    "covariance_normalization": "49/48",
+    "filter_boundary": "scipy.ndimage.uniform_filter default reflect",
+    "spatial_reduction": "float64 mean of SSIM map after cropping a three-pixel border",
+    "channel_reduction": "single channel mean stored in float32",
+    "aggregate": "equal future-frame and sequence weights, accumulated in float64"
+  },
+  "references": {
+    "predformer_commit": "a1493c4ade8eed740d7aed11da819e9aa7914c2d",
+    "predformer_metrics": "https://github.com/yyyujintang/PredFormer/blob/a1493c4ade8eed740d7aed11da819e9aa7914c2d/openstl/core/metrics.py",
+    "predformer_requirements": "https://github.com/yyyujintang/PredFormer/blob/a1493c4ade8eed740d7aed11da819e9aa7914c2d/requirements/runtime.txt",
+    "scikit_image": "https://github.com/scikit-image/scikit-image/blob/v0.19.3/skimage/metrics/_structural_similarity.py",
+    "source_sha256": {
+      "skimage_0193_structural_similarity.py": "694b840612ffa75ddfc2450f48f5791e87c58507471ddf0f318c7e5d7e4a5553",
+      "skimage_0193_utils.py": "bd6c98aa94aeb982abe8c9dd202235f632238cbd18b2e507d6754046d26dedf7",
+      "skimage_0193_arraycrop.py": "4b03840dd6db23677a25467abe314be4db1f04e8fc1b3d64baa72ddbafbbf779",
+      "skimage_0193_dtype.py": "cd62c77188a8e0efedeae57142b62442c926d41a44badb212799ae2b0379f6d9",
+      "predformer_metrics.py": "9c5bd4523ac8fe203e47a4cc0de0d48186732317d9f04caf53b4399f81bb14f9"
+    }
+  },
+  "evaluation_environment": {
+    "torch": "2.11.0+cu128",
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "inference": "FP32 deterministic CUDA; batch16; compile false; TF32 disabled"
+  },
+  "results_sha256": "46229b60d5fd0e3d1154064deaf99b472a1943ea1e85b1660a6a43f2eada793f",
+  "checks": {
+    "all_sequence_ids_present_once": true,
+    "finite_frame_scores": 100000,
+    "independent_mean": 0.9582201841366291,
+    "synthetic_reference_frame_count": 300,
+    "synthetic_reference_max_abs_delta": 0,
+    "other_metric_tensors": "Eight non-SSIM tensors match the archived implementation bitwise on a separate synthetic fixture.",
+    "model_or_training_changes": false
+  },
+  "scope": "Metrics of the fixed validation-selected 1.25M EMA. No subsequent experimental extensions.",
+  "limitation": "PredFormer's declared dependency is scikit-image<=0.19.3, not an exact published environment lock. This specifies the 0.19.3 algorithm and the evaluation environment; it does not establish the dependency versions used for every published baseline value."
+}

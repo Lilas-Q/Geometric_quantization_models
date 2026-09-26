@@ -18,7 +18,7 @@
       "prediction": "deterministic; no noise or best-of-N",
       "primary": "MSE raw; mean pixels/channels, then equally frames/sequences",
       "spatial_sum": "pixel_mean * H * W; other protocol differences still require alignment",
-      "ssim": "clipped [0,1]; Gaussian 11x11 sigma1.5, valid, population, K1=.01 K2=.03",
+      "ssim": "prediction clipped [0,1]; float32; scikit-image 0.19.3 protocol; uniform 7x7; sample covariance; data_range=2; K1=.01 K2=.03; swapaxes(0,2); crop3; float64 spatial mean, float32 channel mean; equal frames/sequences in float64",
       "psnr": "clipped; per-frame -10log10(max(MSE,1e-12)), then average; cap120dB"
     },
     "overall": {
@@ -28,7 +28,7 @@
       "mae_spatial_sum_raw": 62.51341348158763,
       "mse_clipped": 0.004517262618937105,
       "mae_clipped": 0.014468040382812032,
-      "ssim_clipped": 0.9420181709659144,
+      "ssim_clipped": 0.9582201841366291,
       "psnr_clipped": 24.674745890517997,
       "out_of_range_fraction": 0.4785737109375
     },
@@ -106,16 +106,16 @@
         0.017956495272026363
       ],
       "ssim_clipped": [
-        0.9638263535143747,
-        0.9586266906512592,
-        0.9535828795374753,
-        0.9487369409911959,
-        0.9439453119112284,
-        0.9391173719157432,
-        0.9345048407829938,
-        0.9302804483461492,
-        0.92596911580042,
-        0.9215917562083042
+        0.9745757255673408,
+        0.970391337621212,
+        0.9666756438553333,
+        0.963235117906332,
+        0.9596954959213734,
+        0.9561353545665741,
+        0.9527078871786594,
+        0.9495301483929157,
+        0.9462557370185852,
+        0.942999393337965
       ],
       "psnr_clipped": [
         26.8697553656135,
@@ -145,7 +145,11 @@
     "test_used_for_selection": false
   },
   "test_data_sha256": "c2a3e8d3939c001ab77bf543f130157424efa486bb4d0974d2cebb773b13f8b3",
-  "source_report_sha256": "98ee1e4c459e9be67237dfaf97a2d84d562b2081c78aa139314a4e144d7e95da",
+  "metric_sources": {
+    "image_error_and_psnr_report_sha256": "98ee1e4c459e9be67237dfaf97a2d84d562b2081c78aa139314a4e144d7e95da",
+    "ssim_results_sha256": "46229b60d5fd0e3d1154064deaf99b472a1943ea1e85b1660a6a43f2eada793f",
+    "ssim_protocol": "lhfm_v_ssim_protocol.json"
+  },
   "status": "Archived completed run, not newly reproduced by this standalone package.",
   "scope": "Excludes all training and results beyond 1250000 updates."
 }

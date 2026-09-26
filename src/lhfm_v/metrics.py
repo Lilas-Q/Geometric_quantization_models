@@ -1,13 +1,17 @@
 """Deterministic 10-to-10 metrics; report raw and clipped predictions separately."""
 import torch
-from torch.nn import functional as F
+
+from .ssim import frame_ssim
 
 
 PROTOCOL = dict(scale="uint8/255", conditioning="first10; autoregressive future10",
     stochastic_samples=1, prediction="deterministic; no noise or best-of-N",
     primary="MSE raw; mean pixels/channels, then equally frames/sequences",
     spatial_sum="pixel_mean * H * W; other protocol differences still require alignment",
-    ssim="clipped [0,1]; Gaussian 11x11 sigma1.5, valid, population, K1=.01 K2=.03",
+    ssim="prediction clipped [0,1]; float32; scikit-image 0.19.3 protocol; "
+         "uniform 7x7; sample covariance; data_range=2; K1=.01 K2=.03; "
+         "swapaxes(0,2); crop3; float64 spatial mean, float32 channel mean; "
+         "equal frames/sequences in float64",
     psnr="clipped; per-frame -10log10(max(MSE,1e-12)), then average; cap120dB")
 
 
@@ -26,18 +30,11 @@ def metric_tensors(prediction, target):
     error = clipped - y
     mse = error.square().mean((2, 3, 4))
     raw_mse = raw_error.square().mean((2, 3, 4))
-    if min(h, w) < 11:
-        raise ValueError("SSIM requires at least 11x11 images")
-    a = torch.arange(11, dtype=p.dtype, device=p.device) - 5
-    g = (-a.square() / (2 * 1.5**2)).exp()
-    g /= g.sum()
-    kernel = (g[:, None] * g[None, :])[None, None]
-    x, z = clipped.reshape(-1, 1, h, w), y.reshape(-1, 1, h, w)
-    ux, uy = F.conv2d(x, kernel), F.conv2d(z, kernel)
-    vx, vy = F.conv2d(x*x, kernel) - ux*ux, F.conv2d(z*z, kernel) - uy*uy
-    cov = F.conv2d(x*z, kernel) - ux*uy
-    ssim = ((2*ux*uy + .01**2) * (2*cov + .03**2)
-            / ((ux*ux + uy*uy + .01**2) * (vx + vy + .03**2))).mean((1, 2, 3)).reshape(b, t)
+    # Match the published evaluation's FP32 arrays and per-frame reduction.
+    # SSIM runs on CPU; all other metrics retain their FP64 tensor reductions.
+    scores = frame_ssim(prediction.float().cpu().numpy(),
+                        target.float().cpu().numpy())
+    ssim = torch.as_tensor(scores, dtype=torch.float64, device=p.device)
     return dict(mse_raw=raw_mse, mse_spatial_sum_raw=raw_mse*h*w,
         mae_raw=raw_error.abs().mean((2, 3, 4)),
         mae_spatial_sum_raw=raw_error.abs().mean((2, 3, 4))*h*w,

@@ -29,7 +29,8 @@
   "source_lr_policy_sha256": "d9439d8a6b42189b348b69ccf1aebb700310eae600945372b239cadb4ecad34c",
   "selected_checkpoint_sha256": "a280ad2b1e85fd8545164bcd0c24b2af7aa1b7a2025be7d2d62171cf75e4256c",
   "changes": [
-    "Scientific model, fields, loss, data generator, spatial operator, numerical integrator and evaluation modules retain reference bytes.",
+    "Scientific model, fields, loss, data generator, spatial operator and numerical integrator retain reference bytes.",
+    "SSIM uses the scikit-image 0.19.3 uniform-window protocol described in results/lhfm_v_ssim_protocol.json; metrics.py and ssim.py implement it. Other metric reductions retain the reference formulas.",
     "Public import is lhfm_v.LHFM_V; historical serialized identifiers and parameter keys retain provenance.",
     "Standalone CLI and new checkpoint schemas replace deployment-specific controllers.",
     "Schedule composes original OneCycle through update 400000 with the documented half-LR cosine policy through 1250000; beta1 stays on the original trajectory.",
