@@ -1,0 +1,44 @@
+{
+  "model": "LHFM-V",
+  "checkpoint_step": 1250000,
+  "checkpoint_sha256": "a280ad2b1e85fd8545164bcd0c24b2af7aa1b7a2025be7d2d62171cf75e4256c",
+  "aggregate": {
+    "RMS_transport": 0.4570968700551435,
+    "RMS_source": 0.07936747324884089,
+    "rho_transport_over_source": 5.75924684690424,
+    "RMS_transport_plus_source": 0.47837526542531533,
+    "RMS_w_components": 2.109714605545148,
+    "RMS_w_vector_norm": 2.983587007898553,
+    "transport_sq": 0.20893754861420874,
+    "source_sq": 0.006299195809905474,
+    "total_sq": 0.2288428945707409,
+    "transport_source_inner": 0.006803075073313322,
+    "w_component_sq": 4.450895716850519,
+    "w_vector_norm_sq": 8.901791433701039,
+    "transport_source_cosine": 0.18752296523578585,
+    "squared_norm_identity_residual": 2.7755575615628914e-17,
+    "transport_larger_than_source": true
+  },
+  "protocol": {
+    "count": 32,
+    "sequence_ids": "heldout validation IDs 0..31",
+    "conditioning": "10 observed to 10 fully autoregressive future frames",
+    "time_sampling": "20 actual half-step starts, equally weighted",
+    "source": "neural source array r",
+    "transport": "T=A(w)J, actual second-order upwind operator",
+    "units": "T and r: normalized intensity per video frame; w: pixels per video frame",
+    "precision": "CPU FP32 inference; FP64 reductions",
+    "formula": "RMS(X)=sqrt(mean over clips and halfsteps of mean over channels and pixels of X^2))"
+  },
+  "checks": {
+    "instrumented_vs_uninstrumented_first16_prediction_equal": true,
+    "instrumentation_prediction_max_abs_diff": 0,
+    "operator_sign_ramps_passed": true,
+    "parameter_versions_unchanged": true,
+    "all_fields_finite": true,
+    "all_predictions_finite": true,
+    "zero_training_updates": true
+  },
+  "source_report_sha256": "cf89277f986189df5c926df744ddb62cb76da67fb4c14fb2dc05f201872ed403",
+  "interpretation": "Descriptive diagnostics, not independent causal contributions or a controlled cross-task comparison."
+}

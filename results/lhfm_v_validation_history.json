@@ -1,0 +1,186 @@
+{
+  "model": "LHFM-V",
+  "cutoff_step": 1250000,
+  "count": 1024,
+  "precision": "FP32 EMA",
+  "selection_metric": "mse_raw",
+  "rows": [
+    {
+      "step": 5000,
+      "mse_raw": 0.02292492808559975,
+      "mse_spatial_sum_raw": 93.90050543861658
+    },
+    {
+      "step": 10000,
+      "mse_raw": 0.019602276309481047,
+      "mse_spatial_sum_raw": 80.29092376363437
+    },
+    {
+      "step": 20000,
+      "mse_raw": 0.016241191823263685,
+      "mse_spatial_sum_raw": 66.52392170808805
+    },
+    {
+      "step": 40000,
+      "mse_raw": 0.013192728964749632,
+      "mse_spatial_sum_raw": 54.03741783961449
+    },
+    {
+      "step": 80000,
+      "mse_raw": 0.010476486702126071,
+      "mse_spatial_sum_raw": 42.91168953190839
+    },
+    {
+      "step": 120000,
+      "mse_raw": 0.009102219237978893,
+      "mse_spatial_sum_raw": 37.28268999876155
+    },
+    {
+      "step": 160000,
+      "mse_raw": 0.008227216767623785,
+      "mse_spatial_sum_raw": 33.69867988018702
+    },
+    {
+      "step": 200000,
+      "mse_raw": 0.007706609510437418,
+      "mse_spatial_sum_raw": 31.566272554751663
+    },
+    {
+      "step": 240000,
+      "mse_raw": 0.007141278094639325,
+      "mse_spatial_sum_raw": 29.250675075642675
+    },
+    {
+      "step": 280000,
+      "mse_raw": 0.006908478911174526,
+      "mse_spatial_sum_raw": 28.297129620170857
+    },
+    {
+      "step": 320000,
+      "mse_raw": 0.006693172938999452,
+      "mse_spatial_sum_raw": 27.415236358141755
+    },
+    {
+      "step": 360000,
+      "mse_raw": 0.006434699202344442,
+      "mse_spatial_sum_raw": 26.356527932802834
+    },
+    {
+      "step": 400000,
+      "mse_raw": 0.00629283787552858,
+      "mse_spatial_sum_raw": 25.775463938165064
+    },
+    {
+      "step": 440000,
+      "mse_raw": 0.005814574888829822,
+      "mse_spatial_sum_raw": 23.81649874464695
+    },
+    {
+      "step": 480000,
+      "mse_raw": 0.00565290350934122,
+      "mse_spatial_sum_raw": 23.154292774261638
+    },
+    {
+      "step": 520000,
+      "mse_raw": 0.005555626440954667,
+      "mse_spatial_sum_raw": 22.755845902150316
+    },
+    {
+      "step": 560000,
+      "mse_raw": 0.005409691404042999,
+      "mse_spatial_sum_raw": 22.158095990960124
+    },
+    {
+      "step": 600000,
+      "mse_raw": 0.005408079289231345,
+      "mse_spatial_sum_raw": 22.15149276869159
+    },
+    {
+      "step": 640000,
+      "mse_raw": 0.0052376868442419655,
+      "mse_spatial_sum_raw": 21.45356531401509
+    },
+    {
+      "step": 680000,
+      "mse_raw": 0.0051848225786948286,
+      "mse_spatial_sum_raw": 21.237033282334018
+    },
+    {
+      "step": 720000,
+      "mse_raw": 0.005171957836327038,
+      "mse_spatial_sum_raw": 21.184339297595546
+    },
+    {
+      "step": 760000,
+      "mse_raw": 0.005082192372595118,
+      "mse_spatial_sum_raw": 20.816659958149604
+    },
+    {
+      "step": 800000,
+      "mse_raw": 0.005032044733685505,
+      "mse_spatial_sum_raw": 20.61125522917583
+    },
+    {
+      "step": 840000,
+      "mse_raw": 0.00498631063321428,
+      "mse_spatial_sum_raw": 20.423928353645692
+    },
+    {
+      "step": 880000,
+      "mse_raw": 0.004858065823956622,
+      "mse_spatial_sum_raw": 19.898637614926322
+    },
+    {
+      "step": 920000,
+      "mse_raw": 0.004824225607191334,
+      "mse_spatial_sum_raw": 19.760028087055705
+    },
+    {
+      "step": 960000,
+      "mse_raw": 0.004753660716243476,
+      "mse_spatial_sum_raw": 19.470994293733277
+    },
+    {
+      "step": 1000000,
+      "mse_raw": 0.00471301428952463,
+      "mse_spatial_sum_raw": 19.304506529892883
+    },
+    {
+      "step": 1040000,
+      "mse_raw": 0.0046562478020620805,
+      "mse_spatial_sum_raw": 19.07199099724628
+    },
+    {
+      "step": 1080000,
+      "mse_raw": 0.0045968329506220675,
+      "mse_spatial_sum_raw": 18.82862776574799
+    },
+    {
+      "step": 1120000,
+      "mse_raw": 0.004561059544791328,
+      "mse_spatial_sum_raw": 18.682099895465278
+    },
+    {
+      "step": 1160000,
+      "mse_raw": 0.004546579290678823,
+      "mse_spatial_sum_raw": 18.62278877462046
+    },
+    {
+      "step": 1200000,
+      "mse_raw": 0.0045279977371581225,
+      "mse_spatial_sum_raw": 18.54667873139967
+    },
+    {
+      "step": 1240000,
+      "mse_raw": 0.004522389014616879,
+      "mse_spatial_sum_raw": 18.523705403870736
+    },
+    {
+      "step": 1250000,
+      "mse_raw": 0.004522357593379209,
+      "mse_spatial_sum_raw": 18.52357670248124
+    }
+  ],
+  "source": "validation_control in the verified complete 1250000-step state",
+  "scope": "Only the selected training branch; excludes superseded post-400k attempts and post-1250000 extensions."
+}

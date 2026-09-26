@@ -1,0 +1,14 @@
+{
+  "model": "LHFM-V",
+  "date": "2026-09-25",
+  "parameters": 18637493,
+  "device": "cpu",
+  "torch": "2.14.0",
+  "initialization_state_and_rng": "bitwise equal",
+  "full_64x64_10_to_10_forward": "bitwise equal",
+  "small_nonzero_correction_loss_and_all_gradients": "bitwise equal",
+  "small_adamw_update_and_ema": "bitwise equal",
+  "lr_and_beta1": "exact at 12 boundary/interior indices",
+  "new_training_run": false,
+  "cuda_tested": false
+}

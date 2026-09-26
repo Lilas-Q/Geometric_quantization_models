@@ -1,0 +1,41 @@
+{
+  "model": "LHFM-V",
+  "cutoff_step": 1250000,
+  "source_model_id": "lhfm_moving_mnist_physical_fast_plan_v17_wide",
+  "source_experiment_id": "lhfm-moving-mnist-physical-fast-plan-v17-wide-b16-onecycle-2000ep",
+  "source_config_sha256": "1c66035bb4650370907c1ec5257f97b4e01d6b530a890f86ebecabb221f22417",
+  "source_release_manifest_sha256": "5126edce815dbe8fd4d96a306590ad0b0841374cc92034e2b686b90e25c3c63c",
+  "source_files": {
+    "backbone.py": "eb9f119472e49b51214c1cc8153bf68644e32834d7af39d20309a2e669140467",
+    "batch_guard.py": "b673b6b7fa1398db90d975e90c702e163ab2b9292ad15bf3b40c733a638a5d0d",
+    "context.py": "47492bd273d3dd0aecc895653cfbb6db864a2908d8c28634574677fd3c77b5fd",
+    "continuation.py": "177057c881e73dae922533db6d1186342415108a82590ab3ade9678f0ee101fb",
+    "data.py": "78c5b735e7bb2f039250e74f6f40225934b38379f996b062efb1c9422f8871f8",
+    "engine.py": "511c035b1619a1ca3270e996c58de364c11d5b397cdebdac9178c1155935ed21",
+    "execution.py": "43ddf2caf0234e3103cd981cc513ed15b267f8d20cb01c36d845744a81e099c7",
+    "frozen_expm.py": "319b7d6f1480ed439a4b4ca89231c7721298a342c08d18b89f0bf5cb63b6547e",
+    "legacy_batch_guard.py": "00cdafa3462092496fcff4f1415c60203b1df62a1655272fca4c7d4b423626fe",
+    "loss.py": "1006daff7436c5c15e265ea5fd1c32bc47da843281ca0c69579f71800c247dbd",
+    "memory.py": "89433cef0ae24d3cb6ed4d9db6fc00861e9cbffadb2d01bd1fbe262c34e3dec1",
+    "metrics.py": "756cb167d341eca73cc96357529110880e7c8c9100dedd73292133752f8329fb",
+    "model.py": "8b85275a294bc7854e0eaeddf065a249345526e97d14657c4ad005a7fe229515",
+    "optimized_expm.py": "c845a73460a70f9f676fe7a1e6a7067039a620adb6085a69e9fc9a4a30f08ad5",
+    "pipeline.py": "6911aa3a7a67e0387928f1e232378b159c421bb9b3ef832b6f3aff7b9e18204f",
+    "planning.py": "0dd6c03639966f90a9787faf3a5375c051afb507b5b6a2429f7182a8423aced9",
+    "recipe.py": "e2930bb4a26143fba31b32b2a11dba2bc499b4b67a1f9523bee8f4b90202a994",
+    "train.py": "43595ffb9756a5cbadf93ce6253feaafa4e9d688d1b238b08ffec02b62065d38",
+    "transport.py": "06eae50c38e9931e2dfa23e35e7e7d4aab6462a309124380dfbbdb8659cbbb7a"
+  },
+  "source_lr_policy_sha256": "d9439d8a6b42189b348b69ccf1aebb700310eae600945372b239cadb4ecad34c",
+  "selected_checkpoint_sha256": "a280ad2b1e85fd8545164bcd0c24b2af7aa1b7a2025be7d2d62171cf75e4256c",
+  "changes": [
+    "Scientific model, fields, loss, data generator, spatial operator, numerical integrator and evaluation modules retain reference bytes.",
+    "Public import is lhfm_v.LHFM_V; historical serialized identifiers and parameter keys retain provenance.",
+    "Standalone CLI and new checkpoint schemas replace deployment-specific controllers.",
+    "Schedule composes original OneCycle through update 400000 with the documented half-LR cosine policy through 1250000; beta1 stays on the original trajectory.",
+    "CPU eager mode is available for tests; no remote CUDA qualification or new training is claimed."
+  ],
+  "pretrained_weights_included": false,
+  "datasets_included": false,
+  "post_cutoff_experiments_included": false
+}

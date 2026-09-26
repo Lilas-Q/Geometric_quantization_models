@@ -1,0 +1,23 @@
+{
+  "model": "LHFM-V",
+  "checkpoint_step": 1250000,
+  "checkpoint_sha256": "a280ad2b1e85fd8545164bcd0c24b2af7aa1b7a2025be7d2d62171cf75e4256c",
+  "source": "Existing official FP32 EMA test previews; no additional inference",
+  "selection": "first six test sequences, IDs 0 through 5",
+  "rows": [
+    "context frames 1-10",
+    "ground truth frames 11-20",
+    "prediction frames 11-20"
+  ],
+  "display": "clipped [0,1], rounded uint8; downloaded originals unmodified",
+  "files": {
+    "lhfm-v-moving-mnist-1250k/sequence-00000.png": "7b67b27c34e91c2a5477e4bef2286fd7519a334d62de673e7f165eda594f1d37",
+    "lhfm-v-moving-mnist-1250k/sequence-00001.png": "9c7b4dfe6ea02ee5adaa02e0bddb1b8d3f618386daaa680bbc327f2a7833a436",
+    "lhfm-v-moving-mnist-1250k/sequence-00002.png": "3bff22df02df265e046d66abcccbefe60cddd320ed9936137c88a2745bd3a635",
+    "lhfm-v-moving-mnist-1250k/sequence-00003.png": "7da317b57c62d9ee0b7c98b268bbf05b8807be4f62c318482499e99d44a81072",
+    "lhfm-v-moving-mnist-1250k/sequence-00004.png": "b119c98a0f55fea359506005ac2ea407bfea6cb1aa84c3fdd4581f59f7157410",
+    "lhfm-v-moving-mnist-1250k/sequence-00005.png": "53d873f1a4a0065b897ed86fb946f87d7bbd97d54ebb34c885168866ccf33724"
+  },
+  "test_report": "../results/lhfm_v_moving_mnist_1250k.json",
+  "original_preview_manifest_sha256": "58d9ef24f3a6d6be44c2eac3a5c401f09981c87cb29fe1f8695a0f981347bf31"
+}

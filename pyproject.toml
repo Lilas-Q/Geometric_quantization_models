@@ -4,13 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lhfm-i"
-version = "0.1.0"
-description = "LHFM-I: Lagrangian-Hamiltonian Flow Matching for image generation"
+version = "0.2.0"
+description = "LHFM-I image generation and LHFM-V deterministic video prediction"
 requires-python = ">=3.10"
 dependencies = ["torch>=2.2", "torchvision>=0.17"]
 
 [project.optional-dependencies]
 test = ["pytest>=8"]
+video = ["numpy>=1.24", "Pillow>=10"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
